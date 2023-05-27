@@ -10,9 +10,11 @@
     <link rel="icon" href="logoa.png">
    
 </head>
-<body onload="myFunction()">
+<body>
         
-    <div id="loader"></div>
+    <div class="loader">
+    <img src="loading.gif" alt="">
+  </div>
 
     <div class="header">
         <div class="logo">
@@ -228,11 +230,13 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="index.js"></script>
     
-        <script>
+  <script>
+        var loader = document.querySelector(".loader")
 
-        var preloader = document.getElementById('loader');
-        function myFunction(){
-            preloader.style.display = 'none';
+        window.addEventListener("load", vanish);
+        
+        function vanish() {
+          loader.classList.add("disppear");
         }
 
     </script>
