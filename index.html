@@ -10,7 +10,10 @@
     <link rel="icon" href="logoa.png">
    
 </head>
-<body>
+<body onload="myFunction()">
+        
+    <div id="loader"></div>
+
     <div class="header">
         <div class="logo">
             <a href="#"><img src="logoa.png" alt="" width="50px"></a>
@@ -224,5 +227,14 @@
     <script src="scroll.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="index.js"></script>
+    
+        <script>
+
+        var preloader = document.getElementById('loader');
+        function myFunction(){
+            preloader.style.display = 'none';
+        }
+
+    </script>
 </body>
 </html>
