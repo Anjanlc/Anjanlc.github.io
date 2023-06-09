@@ -468,8 +468,8 @@ nav ul li:hover a {
     width: 50%;
 }
 
-.skillBox .right .progress.python .range::before {
-    width: 50%;
+.skillBox .right .progress.photoshop .range::before {
+    width: 80%;
 }
 
 #contact {
