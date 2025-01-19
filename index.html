@@ -219,10 +219,12 @@
        .then(() => {
          alert("Message sent successfully!");
        })
+         
        .catch((error) => {
          console.error("Failed to send message:", error);
          alert("Message sent successfully.");
        });
+       contactForm.reset();
    });
  </script>
  
