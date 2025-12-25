@@ -16,21 +16,10 @@ bar.addEventListener('click',()=>{
 topBtn.addEventListener('click',()=>{
     btn.click()
 })
+
 contactBtn.addEventListener('click',()=>{
     btn2.click()
 })
-
-// Logic for "Read more" button
-// readMoreBtn.addEventListener('click', () => {
-//   paragraph.classList.toggle('expanded');
-//   if (paragraph.classList.contains('expanded')) {
-//       readMoreBtn.textContent = 'Read less';
-//       paragraph.style.maxHeight = 'none'; // Allow full expansion
-//   } else {
-//       readMoreBtn.textContent = 'Read more';
-//       paragraph.style.maxHeight = '100px'; // Adjust to desired collapsed height
-//   }
-// });
 
 document.querySelector('.read-more').addEventListener('click', function () {
   const moreText = document.querySelector('.more-text');
@@ -45,23 +34,37 @@ document.querySelector('.read-more').addEventListener('click', function () {
   }
 });
 
-
 var options = {
     strings: ['ASP .Net Developer', '.Net MAUI Developer'],
     typeSpeed: 100,
     backSpeed: 100,
     loop: true
-  };
-  
-  var typed = new Typed('.typing1', options);
-  var typed = new Typed('.typing2', options);
+};
 
-  ScrollOut({
+var typed = new Typed('.typing1', options);
+var typed = new Typed('.typing2', options);
+
+ScrollOut({
     targets: '.img, .aboutText , .box, div.left, div.right'
-  })
-  ScrollOut({
+})
+ScrollOut({
     targets: '.header',
     offset: 50
-  })
+})
 
+const bgGlow = document.createElement('div');
+bgGlow.className = 'bg-glow';
+document.body.appendChild(bgGlow);
 
+document.addEventListener('mousemove', (e) => {
+    bgGlow.style.left = e.clientX + 'px';
+    bgGlow.style.top = e.clientY + 'px';
+});
+
+document.addEventListener('mouseleave', () => {
+    bgGlow.style.opacity = '0';
+});
+
+document.addEventListener('mouseenter', () => {
+    bgGlow.style.opacity = '1';
+});

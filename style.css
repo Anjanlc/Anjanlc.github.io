@@ -1,27 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 
-/* .loader{
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #030303;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .disppear{
-    animation: vanish 2s forwards;
-  }
-  @keyframes vanish {
-    100%{
-      opacity: 0;
-      visibility:hidden;
-    }
-  } */
-
 * {
     margin: 0;
     padding: 0;
@@ -33,10 +11,50 @@ body {
     width: 100%;
     min-height: 100vh;
     font-family: 'Ubuntu', sans-serif;
-    background: #121212;
+    background: #0a0a0a;
     overflow-y: overlay;
     color: #fff;
     overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 182, 182, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 182, 182, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bg-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 182, 182, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    filter: blur(80px);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 60px 40px;
+    position: relative;
+    z-index: 10;
 }
 
 ::-webkit-scrollbar {
@@ -61,8 +79,6 @@ body {
     border-radius: 100vh;
 }
 
-
-
 .header {
     display: flex;
     width: 100%;
@@ -70,24 +86,28 @@ body {
     align-items: center;
     padding: 40px 50px;
     position: fixed;
-    background: #121212;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
     z-index: 100;
     transition: 0.5s;
 }
 
 .header[data-scroll="in"] {
     padding: 10px 50px;
-    box-shadow: inset -2px -1px 3px rgba(255, 255, 255, 0.3);
+    box-shadow: inset -2px -1px 3px rgba(0, 182, 182, 0.3);
 }
 
 .logo {
     font-size: 45px;
     font-weight: 700;
     cursor: pointer;
+    position: relative;
+    z-index: 15;
 }
 
 nav {
     position: relative;
+    z-index: 15;
 }
 
 nav .bar {
@@ -99,13 +119,16 @@ nav .bar {
     display: none;
     z-index: 1000;
 }
-nav .bar .close{
+
+nav .bar .close {
     display: none;
 }
-nav .bar.active .open{
+
+nav .bar.active .open {
     display: none;
 }
-nav .bar.active .close{
+
+nav .bar.active .close {
     display: initial;
 }
 
@@ -122,10 +145,30 @@ nav ul li a {
     text-decoration: none;
     color: #fff;
     font-size: 18px;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
 
 nav ul li:hover a {
     color: rgba(0, 182, 182);
+    text-shadow: 0 0 15px rgba(0, 182, 182, 0.5);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(0, 182, 182, 0.1);
+    border: 1px solid rgba(0, 182, 182, 0.5);
+    border-radius: 50px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
 .home {
@@ -134,6 +177,7 @@ nav ul li:hover a {
     justify-content: space-around;
     position: relative;
     overflow-x: hidden;
+    z-index: 10;
 }
 
 .home .text {
@@ -142,20 +186,21 @@ nav ul li:hover a {
 
 .home .text>span {
     font-size: 20px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     padding-left: 5px;
 }
 
 .home .text h1 {
     font-size: 70px;
     line-height: 95px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: rgba(0, 182, 182);
+    text-shadow: 0 0 30px rgba(0, 182, 182, 0.3);
 }
 
 .home .text h3 {
     font-size: 35px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     padding-left: 5px;
 }
 
@@ -166,7 +211,8 @@ nav ul li:hover a {
 .image {
     width: 400px;
     height: 520px;
-
+    position: relative;
+    z-index: 10;
 }
 
 .image img {
@@ -174,6 +220,7 @@ nav ul li:hover a {
     position: absolute;
     bottom: 0;
     border-radius: 6%;
+    filter: drop-shadow(0 0 30px rgba(0, 182, 182, 0.2));
 }
 
 .buttons {
@@ -189,6 +236,7 @@ nav ul li:hover a {
     cursor: pointer;
     color: rgba(0, 182, 182);
     transition: 0.3s;
+    letter-spacing: 1px;
 }
 
 .btn a {
@@ -204,7 +252,8 @@ nav ul li:hover a {
 .btn:hover {
     background: rgba(0, 182, 182);
     color: #000;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 182, 182, 0.5);
 }
 
 .hidden {
@@ -212,37 +261,36 @@ nav ul li:hover a {
 }
 
 #about {
-    background: #343434;
-    padding-block: 100px;
+    background: transparent;
+    padding: 100px 50px;
     overflow-x: hidden;
+    position: relative;
+    z-index: 10;
 }
 
 .title {
     position: relative;
     height: 30px;
-    margin-bottom: 50px;
-
+    margin-bottom: 80px;
 }
 
 .title span {
     display: inline-block;
-    font-size: 30px;
-    padding: 0 10px;
+    font-size: 32px;
+    padding: 0 20px;
     position: absolute;
     transform: translateX(-50%);
     left: 50%;
     z-index: 10;
-}
-
-#about .title span {
-    background: #343434;
+    background: #0a0a0a;
+    letter-spacing: 3px;
 }
 
 .title:before {
     content: '';
     width: 300px;
-    height: 3px;
-    background: #fff;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 182, 182, 0.5), transparent);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -259,7 +307,7 @@ nav ul li:hover a {
     width: 350px;
     height: 375px;
     overflow: hidden;
-    background: #999;
+    background: rgba(255, 255, 255, 0.02);
     margin-right: 50px;
     transform: translateX(-100px) scale(0.7);
     opacity: 0;
@@ -267,6 +315,7 @@ nav ul li:hover a {
     display: flex;
     border-radius: 10px;
     justify-content: center;
+    border: 1px solid rgba(0, 182, 182, 0.2);
 }
 
 #about .container .img[data-scroll="in"] {
@@ -294,10 +343,9 @@ nav ul li:hover a {
     opacity: 1;
 }
 
-
 .container .aboutText h2 {
     font-size: 25px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     line-height: 35px;
     padding: 30px 0;
 }
@@ -310,21 +358,15 @@ nav ul li:hover a {
     font-size: 16px;
     letter-spacing: 1px;
     color: #ccc;
+    line-height: 28px;
 }
-/* ======================================================================== */
-
 
 #projects {
-    padding: 100px;
+    padding: 100px 50px;
     overflow-x: hidden;
-    background: #232323;
-}
-
-#projects .title span {
-    background: #232323;
-    font-size: 28px;
-    border-radius: 5px;
-
+    background: transparent;
+    position: relative;
+    z-index: 10;
 }
 
 .projects-container {
@@ -336,21 +378,23 @@ nav ul li:hover a {
 
 .projects-container .project-box {
     width: 350px;
-    border-radius: 10px;
-    background: #383537;
-    /* background: #232323; */
-    padding: 50px 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 20px;
     text-align: unset;
     transition: 0.5s;
-    /* Make boxes visible immediately */
     transform: translateY(0px) scale(1);
     opacity: 1;
-    margin: 10px;
+    margin: 15px;
 }
 
 .projects-container .project-box:hover {
-    background: #333;
-    box-shadow: 0px 6px 20px rgba(0, 182, 182, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 30px rgba(0, 182, 182, 0.4);
+    transform: translateY(-10px);
+    border-color: rgba(0, 182, 182, 0.3);
 }
 
 .project-card {
@@ -358,7 +402,7 @@ nav ul li:hover a {
 }
 
 .projects-container .project-box:hover .project-card {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .project-card .project-image {
@@ -375,48 +419,45 @@ nav ul li:hover a {
 }
 
 .project-card .project-text h3 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 600;
     margin-bottom: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: rgba(0, 182, 182);
 }
 
 .project-card .project-text p {
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 1px;
     color: #999;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
-
-
-
-
-/* ======================================================================== */
 #services {
-    padding: 100px;
+    padding: 100px 50px;
     overflow-x: hidden;
-}
-
-#services .title span {
-    background: #121212;
+    position: relative;
+    z-index: 10;
 }
 
 .serviceBox {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .serviceBox .box {
     width: 350px;
-    border-radius: 10px;
-    background: #232323;
-    padding: 50px 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 20px;
     text-align:unset;
     transition: 0.5s;
     transform: translateY(70px) scale(0.7);
     opacity: 0;
-    margin: 10px;
+    margin: 15px;
 }
 
 .serviceBox .box[data-scroll="in"] {
@@ -425,8 +466,10 @@ nav ul li:hover a {
 }
 
 .serviceBox .box:hover {
-    background: #333;
-    box-shadow: 0px 6px 20px rgba(0, 182, 182, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 30px rgba(0, 182, 182, 0.4);
+    transform: translateY(-10px);
+    border-color: rgba(0, 182, 182, 0.3);
 }
 
 .card {
@@ -434,7 +477,7 @@ nav ul li:hover a {
 }
 
 .serviceBox .box:hover .card {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .card .icon {
@@ -445,29 +488,30 @@ nav ul li:hover a {
 .card .icon i {
     font-size: 50px;
     color: rgba(0, 182, 182);
+    filter: drop-shadow(0 0 15px rgba(0, 182, 182, 0.5));
 }
 
 .card .text {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 600;
     margin-bottom: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: rgba(0, 182, 182);
 }
 
 .card p {
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 1px;
     color: #999;
+    line-height: 1.8;
 }
 
 #skills {
-    background: #343434;
-    padding: 100px;
+    background: transparent;
+    padding: 100px 50px;
     overflow-x: hidden;
-}
-
-#skills .title span {
-    background: #343434;
+    position: relative;
+    z-index: 10;
 }
 
 .skillBox {
@@ -490,14 +534,15 @@ nav ul li:hover a {
 
 .skillBox .left .text {
     font-size: 30px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin-bottom: 20px;
+    color: rgba(0, 182, 182);
 }
 
 .skillBox .left p {
     font-size: 18px;
     color: #999;
-    line-height: 25px;
+    line-height: 30px;
     letter-spacing: 1px;
 }
 
@@ -525,15 +570,16 @@ nav ul li:hover a {
 
 .skillBox .right .progress .info span {
     font-size: 18px;
-
+    letter-spacing: 1px;
 }
 
 .skillBox .right .progress .range {
     width: 100%;
     height: 5px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
     margin-top: 10px;
     position: relative;
+    border-radius: 5px;
 }
 
 .skillBox .right .progress .range::before {
@@ -541,6 +587,8 @@ nav ul li:hover a {
     position: absolute;
     height: 100%;
     background-color: rgba(0, 182, 182);
+    box-shadow: 0 0 15px rgba(0, 182, 182, 0.5);
+    border-radius: 5px;
 }
 
 .skillBox .right .progress.language .range::before {
@@ -552,7 +600,7 @@ nav ul li:hover a {
 }
 
 .skillBox .right .progress.MAUI .range::before {
-    width: 50%;
+    width: 60%;
 }
 
 .skillBox .right .progress.SQL .range::before {
@@ -560,13 +608,11 @@ nav ul li:hover a {
 }
 
 #contact {
-    background: #121212;
-    padding: 100px;
+    background: transparent;
+    padding: 100px 50px;
     overflow-x: hidden;
-}
-
-#contact span {
-    background-color: #121212;
+    position: relative;
+    z-index: 10;
 }
 
 .contactBox {
@@ -587,7 +633,7 @@ nav ul li:hover a {
 }
 
 .contactBox .left span {
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     font-size: 25px;
     line-height: 70px;
 }
@@ -599,28 +645,38 @@ nav ul li:hover a {
 
 .contactBox .left form input {
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #000;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 182, 182, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
     font-size: 16px;
     margin: 10px 0;
+    transition: 0.3s;
 }
 
 .contactBox .left form input:focus {
     outline: none;
+    border-color: rgba(0, 182, 182);
+    box-shadow: 0 0 15px rgba(0, 182, 182, 0.3);
 }
 
 .contactBox .left form textarea:focus {
     outline: none;
+    border-color: rgba(0, 182, 182);
+    box-shadow: 0 0 15px rgba(0, 182, 182, 0.3);
 }
 
 .contactBox .left form textarea {
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 8px;
     font-size: 16px;
-    border: 1px solid #000;
+    border: 1px solid rgba(0, 182, 182, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
     margin: 10px 0;
+    transition: 0.3s;
 }
 
 .contactBox .right {
@@ -638,14 +694,14 @@ nav ul li:hover a {
 
 .contactBox .right span {
     font-size: 25px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     line-height: 70px;
 }
 
 .contactBox .right p {
     font-size: 18px;
     letter-spacing: 1px;
-    line-height: 25px;
+    line-height: 28px;
     color: #999;
     margin-bottom: 20px;
 }
@@ -654,6 +710,10 @@ nav ul li:hover a {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .infoBox i {
@@ -665,6 +725,7 @@ nav ul li:hover a {
 .infoBox .user div {
     font-size: 18px;
     line-height: 30px;
+    letter-spacing: 1px;
 }
 
 .infoBox .user div:nth-child(2) {
@@ -676,9 +737,12 @@ nav ul li:hover a {
     justify-content: space-between;
     padding: 10px 50px;
     align-items: center;
-    box-shadow: 0 -1px 2px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 -1px 2px rgba(0, 182, 182, 0.2);
+    position: relative;
+    z-index: 15;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
 }
-
 
 .footer .socialIcons a i {
     font-size: 30px;
@@ -691,13 +755,15 @@ nav ul li:hover a {
 .footer .socialIcons a:hover i {
     transform: translateY(-10px) scale(1.2);
     color: rgba(0, 182, 182);
+    filter: drop-shadow(0 0 15px rgba(0, 182, 182, 0.5));
 }
 
 .topBtn {
     width: 45px;
     height: 45px;
-    border-radius: 5px;
-    background-color: rgba(0, 182, 182);
+    border-radius: 8px;
+    background-color: rgba(0, 182, 182, 0.8);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -705,6 +771,14 @@ nav ul li:hover a {
     bottom: 60px;
     right: 50px;
     cursor: pointer;
+    z-index: 100;
+    transition: 0.3s;
+    border: 1px solid rgba(0, 182, 182);
+}
+
+.topBtn:hover {
+    box-shadow: 0 0 25px rgba(0, 182, 182, 0.6);
+    transform: translateY(-5px);
 }
 
 .topBtn i {
@@ -720,75 +794,55 @@ nav ul li:hover a {
     .header[data-scroll="in"] {
         padding: 10px 25px;
     }
-
     nav ul li {
         margin: 0 20px;
     }
-
     .home .text h1 {
         font-size: 70px;
-        ;
     }
-
     .home .text>span {
         font-size: 18px;
     }
-
     .home .text h3 {
         font-size: 28px;
     }
     #about {
-        padding-block: 50px;
+        padding: 50px 30px;
     }
-
     #about .container .img {
         width: 250px;
         height: 300px;
     }
-
     #about .container {
         padding-inline: 30px;
     }
-
     .container .aboutText h2 {
         font-size: 23px;
     }
-
     .container .aboutText p {
         font-size: 14px;
     }
-
-    #services {
-        padding: 50px;
+    #services, #projects, #skills, #contact {
+        padding: 50px 30px;
     }
-
-    .serviceBox .box {
+    .serviceBox .box, .projects-container .project-box {
         padding: 30px 20px;
     }
-
     .card .text {
-        font-size: 26px;
+        font-size: 24px;
     }
-
-    .card p {
+    .card p, .project-card .project-text p {
         font-size: 14px;
     }
-
-    #skills {
-        padding: 50px;
-    }
-
     .skillBox .right {
         padding: 20px 40px 0;
     }
-
-    #contact {
-        padding: 50px;
+    .glass-card {
+        padding: 40px 30px;
     }
 }
 
 @media (max-width:768px) {
-    
     nav ul{
         opacity: 0;
         pointer-events: none;
@@ -799,9 +853,10 @@ nav ul li:hover a {
         right: -10px;
         border-radius: 5px;
         padding: 30px 40px 10px;
-        background: #121212;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 182, 182, 0.3);
         transition: 0.5s;
-
     }
     nav ul.active{
         opacity: 1;
@@ -814,15 +869,10 @@ nav ul li:hover a {
         display: initial;
         right: 56;
     }
-
-
-    
-
     .home .text h1 {
         font-size: 45px;
         line-height: 70px;
     }
-
     .home .text>span {
         font-size: 14px;
     }
@@ -851,7 +901,7 @@ nav ul li:hover a {
     .serviceBox {
         flex-wrap: wrap;
     }
-    .serviceBox .box {
+    .serviceBox .box, .projects-container .project-box {
         width: 275px;
     }
     .skillBox .left {
@@ -881,6 +931,9 @@ nav ul li:hover a {
     .topBtn i {
         font-size: 20px;
     }
+    .glass-card {
+        padding: 30px 20px;
+    }
 }
 
 @media (max-width:630px) {
@@ -904,13 +957,12 @@ nav ul li:hover a {
         right: -30px;
         border-radius: 5px;
         padding: 30px 40px 10px;
-        background: #121212;
+        background: rgba(10, 10, 10, 0.95);
     }
     .home {
         padding-top: 120px;
         height: 100vh;
     }
-    
     .image {
         display: none;
     }
@@ -958,7 +1010,7 @@ nav ul li:hover a {
         margin-right: 25px;
     }
     .footer {
-        padding: 10px 20px;;
+        padding: 10px 20px;
     }
     .footer .socialIcons a i {
         font-size: 25px;
@@ -970,7 +1022,6 @@ nav ul li:hover a {
     .topBtn{
         bottom: 55px;
     }
-   
 }
 
 @media (max-width:425px) {
