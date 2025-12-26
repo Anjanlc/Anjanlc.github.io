@@ -6,19 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <title>Anjan Lamichhane</title>
+    <title>Anjan Lamichhane - Portfolio</title>
     <link rel="icon" href="logoa.png">
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader"></div>
+        <p>Loading Portfolio...</p>
+    </div>
 
     <div class="header">
         <div class="logo">
-            <a href="#"><img src="logoa.png" alt="" width="50px"></a>
+            <a href="#"><img src="logoa.png" alt="Logo" width="50px"></a>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -29,18 +38,19 @@
             </div>
         </nav>
     </div>
+
     <div class="main">
         <div class="home" id="home">
             <div class="left text">
                 <div class="status-badge">● AVAILABLE FOR HIRE</div>
                 <span>Hello, I'm</span><br>
                 <h1>Anjan Lamichhane</h1>
-                <h3>I'm a <span class="typing1"></span></h3>
+                <h3>I'm a <span class="typing1"></span><span class="cursor">|</span></h3>
                 <div class="buttons">
-                    <button class="btn"><a href="#contact">Contact me</a></button>
+                    <button class="btn magnetic"><a href="#contact">Contact me</a></button>
                 </div>
             </div>
-            <div class="image">
+            <div class="image parallax-image">
                 <img src="png logo copy.png" alt="Anjan">
             </div>
         </div>
@@ -54,7 +64,7 @@
                     <img src="anjan.JPG" alt="Anjan">
                 </div>
                 <div class="aboutText">
-                    <h2>Hello, I'm Anjan & I'm a <span class="typing2"></span></h2>
+                    <h2>Hello, I'm Anjan & I'm a <span class="typing2"></span><span class="cursor">|</span></h2>
                     <p>I'm Anjan Lamichhane, a passionate C# .NET developer based in Kathmandu, Nepal. 
                         With a strong foundation in computer engineering, I specialize in developing 
                         high-quality software solutions. At Katmatics Solution, I focus on ASP .NET for 
@@ -65,7 +75,9 @@
                         latest technologies, ensuring I deliver impactful and user-friendly applications 
                         that meet the needs of both users and businesses.</p>
                         <div class="buttons">
-                            <a href="Anjan Lamichhane CV.pdf" download="Anjan_Lamichhane_CV.pdf" class="btn">Download CV</a>
+                            <a href="Anjan Lamichhane CV.pdf" download="Anjan_Lamichhane_CV.pdf" class="btn magnetic download-cv">
+                                <i class="fas fa-download"></i> Download CV
+                            </a>
                         </div>
                 </div>
             </div>
@@ -76,9 +88,17 @@
             <div class="projects-title title">
                 <span>My Projects</span>
             </div>
-            <!-- First Row of Projects -->
+            
+            <!-- Project Filter -->
+            <div class="project-filter">
+                <button class="filter-btn active magnetic" data-filter="all">All</button>
+                <button class="filter-btn magnetic" data-filter="web">Web</button>
+                <button class="filter-btn magnetic" data-filter="desktop">Desktop</button>
+                <button class="filter-btn magnetic" data-filter="mobile">Mobile</button>
+            </div>
+
             <div class="projects-container">
-                <div class="project-box">
+                <div class="project-box" data-category="web">
                     <div class="project-card">
                         <div class="project-image">
                             <img src="venue-booking.png" alt="Venue Booking System">
@@ -89,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-box">
+                <div class="project-box" data-category="mobile">
                     <div class="project-card">
                         <div class="project-image">
                             <img src="chatting.png" alt="Chatting Application">
@@ -100,50 +120,47 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-box">
+                <div class="project-box" data-category="desktop">
                     <div class="project-card">
                         <div class="project-image">
                             <img src="bookshop-management.png" alt="Bookshop Management System">
                         </div>
                         <div class="project-text">
                             <h3>Bookshop Management System</h3>
-                            <p> I developed a desktop-based Bookshop Management System that helps bookshop owners efficiently manage their inventory and sales. The system allows users to add and remove books, track stock levels, and process customer purchases. It also generates sales reports and manages customer information, streamlining the daily operations of a bookshop.</p>
+                            <p>I developed a desktop-based Bookshop Management System that helps bookshop owners efficiently manage their inventory and sales. The system allows users to add and remove books, track stock levels, and process customer purchases. It also generates sales reports and manages customer information, streamlining the daily operations of a bookshop.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Second Row of Projects -->
-            <div class="projects-container">
-                <div class="project-box">
+                <div class="project-box" data-category="desktop">
                     <div class="project-card">
                         <div class="project-image">
                             <img src="pharmacy-management.png" alt="Pharmacy Management System">
                         </div>
                         <div class="project-text">
                             <h3>Pharmacy Management System</h3>
-                            <p> I created a desktop application for Pharmacy Management that helps pharmacy owners manage their inventory, prescriptions, and sales. The system enables pharmacists to track medicine stock, handle prescriptions, and generate invoices. It also includes features for managing suppliers and generating reports, making it a complete solution for running a pharmacy.</p>
+                            <p>I created a desktop application for Pharmacy Management that helps pharmacy owners manage their inventory, prescriptions, and sales. The system enables pharmacists to track medicine stock, handle prescriptions, and generate invoices. It also includes features for managing suppliers and generating reports, making it a complete solution for running a pharmacy.</p>
                         </div>
                     </div>
                 </div>
-                <div class="project-box">
+                <div class="project-box" data-category="desktop">
                     <div class="project-card">
                         <div class="project-image">
                             <img src="QR.png" alt="QR Generator">
                         </div>
                         <div class="project-text">
                             <h3>QR Generator</h3>
-                            <p> I developed a QR generator desktop application that allows users to generate QR codes for various purposes. The app lets users input text, URLs, or other data to generate a QR code instantly. It provides customization options such as adjusting the QR code's size and output format, making it a versatile tool for creating scannable codes for sharing information easily and quickly.</p>
+                            <p>I developed a QR generator desktop application that allows users to generate QR codes for various purposes. The app lets users input text, URLs, or other data to generate a QR code instantly. It provides customization options such as adjusting the QR code's size and output format, making it a versatile tool for creating scannable codes for sharing information easily and quickly.</p>
                         </div>
                     </div>
                 </div>
-                <div class="project-box">
+                <div class="project-box" data-category="web">
                     <div class="project-card">
                         <div class="project-image">
                             <img src="pharmacy-management.png" alt="GastroPlus Clinic Website">
                         </div>
                         <div class="project-text">
                             <h3>GastroPlus Clinic Website</h3>
-                            <p> I designed and developed a website for GastroPlus, a clinic specializing in gastroenterology services. The website provides essential information about the clinic, including doctor profiles, services, patient resources, and appointment scheduling. It is built with a user-friendly interface to ensure patients can easily access the information they need.</p>
+                            <p>I designed and developed a website for GastroPlus, a clinic specializing in gastroenterology services. The website provides essential information about the clinic, including doctor profiles, services, patient resources, and appointment scheduling. It is built with a user-friendly interface to ensure patients can easily access the information they need.</p>
                         </div>
                     </div>
                 </div>
@@ -172,7 +189,7 @@
                             <i class="fa-solid fa-mobile-alt"></i>
                         </div>
                         <div>
-                            <div class="text">Cross-Platform Mobile Development with .NET MAUI</div>
+                            <div class="text">Cross-Platform Mobile Development</div>
                             <p>Leveraging .NET MAUI (Multi-platform App UI), I build cross-platform mobile applications that run seamlessly on Android and iOS devices. This framework allows me to create native-like mobile experiences, providing users with fast, responsive, and visually appealing applications. By utilizing a single codebase, I streamline the development process while ensuring a high level of performance and consistency across platforms. Whether you're looking to launch a new mobile app or enhance an existing one, I can help bring your vision to life with .NET MAUI.</p>
                         </div>
                     </div>
@@ -185,6 +202,7 @@
                         <div>
                             <div class="text">Windows Application Development</div>
                             <p>I offer custom Windows application development services, creating desktop solutions that are tailored to your business needs. With expertise in C# and the .NET framework, I design powerful, efficient applications that enhance productivity and improve operational workflows. From standalone desktop tools to more complex enterprise-grade solutions, I build applications that integrate with your existing infrastructure while maintaining a focus on user-friendly interfaces and high reliability. I aim to deliver applications that boost efficiency and provide long-term value to your business.</p>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -202,39 +220,39 @@
                         With a solid foundation in C# and .NET technologies, I bring strong proficiency in developing robust applications. 
                         My expertise includes ASP .NET for building dynamic web applications, .NET MAUI for cross-platform mobile development (Android and iOS), and SQL for efficient database management. 
                         <span class="more-text hidden">
-                            Additionally, I am skilled in Windows Application development, enabling me to create seamless desktop solutions. Currently working at Katmatics Solution, I am continually refining my skills and expanding my knowledge to contribute to the development of high-quality, user-friendly software solutions. My dedication to growth and excellence drives me to enhance my expertise in the ever-evolving field of software development.
+                             Additionally, I am skilled in Windows Application development, enabling me to create seamless desktop solutions. Currently working at Katmatics Solution, I am continually refining my skills and expanding my knowledge to contribute to the development of high-quality, user-friendly software solutions. My dedication to growth and excellence drives me to enhance my expertise in the ever-evolving field of software development.
                         </span>
                     </p>
                     <div class="buttons">
-                        <button class="btn read-more">Read more</button>
+                        <button class="btn read-more magnetic">Read more</button>
                     </div>
                 </div>               
                 <div class="right">
                     <div class="progress language">
                         <div class="info">
                             <span>Programming Language (C#)</span>
-                            <span>80%</span>
+                            <span><span class="counter" data-target="80">0</span>%</span>
                         </div>
                         <div class="range"></div>
                     </div>
                     <div class="progress ASP">
                         <div class="info">
                             <span>ASP .Net Core</span>
-                            <span>80%</span>
+                            <span><span class="counter" data-target="80">0</span>%</span>
                         </div>
                         <div class="range"></div>
                     </div>
                     <div class="progress MAUI">
                         <div class="info">
                             <span>Dotnet MAUI</span>
-                            <span>60%</span>
+                            <span><span class="counter" data-target="60">0</span>%</span>
                         </div>
                         <div class="range"></div>
                     </div>
                     <div class="progress SQL">
                         <div class="info">
                             <span>MS SQL</span>
-                            <span>80%</span>
+                            <span><span class="counter" data-target="80">0</span>%</span>
                         </div>
                         <div class="range"></div>
                     </div>
@@ -261,9 +279,20 @@
                             <textarea name="message" rows="8" placeholder="Message..." required></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="btn">Send Message</button>
+                            <button type="submit" class="btn magnetic submit-btn">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loader hidden">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                            </button>
                         </div>
-                    </form>                    
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div class="form-message hidden">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Message sent successfully!</p>
+                    </div>
                 </div>
                 <div class="right">
                     <span>Get in Touch</span>
@@ -287,29 +316,30 @@
                         <i class="fa-solid fa-location-dot"></i>
                         <div class="user">
                             <div>Address</div>
-                            <div>Kathmandu,Nepal</div>
+                            <div>Kathmandu, Nepal</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="footer">
         <div class="copy">
-            Copyright &copy;  2023         
+            Copyright &copy; 2023         
         </div>
         <div class="name">
             Anjan Lamichhane 
-            <img src="coffee icon.png" alt="Coffee Favicon" width="20px" height="20px" style="vertical-align: middle; margin-right: 5px;">
+            <img src="coffee icon.png" alt="Coffee" width="20px" height="20px" style="vertical-align: middle; margin-right: 5px;">
         </div>
         <div class="socialIcons">
-            <a href="https://www.instagram.com/anjan.lamichhane.75" target="_blank">
+            <a href="https://www.instagram.com/anjan.lamichhane.75" target="_blank" class="social-link">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://www.facebook.com/anjan.lamichhane.75" target="_blank">
+            <a href="https://www.facebook.com/anjan.lamichhane.75" target="_blank" class="social-link">
                 <i class="fa-brands fa-square-facebook"></i>
             </a>
-            <a href="https://github.com/Anjanlc" target="_blank">
+            <a href="https://github.com/Anjanlc" target="_blank" class="social-link">
                 <i class="fa-brands fa-square-github"></i>
             </a>
         </div>
@@ -319,36 +349,17 @@
         <a href="#"><i class="fa-solid fa-angle-up"></i></a>
     </div>
 
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-      emailjs.init("viZyddmUCALVhbQOE");
-      
-      document.getElementById("contactForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const data = {
-          from_name: formData.get("name"),
-          reply_to: formData.get("email"),
-          subject: formData.get("subject"),
-          message: formData.get("message"),
-        };
-        
-        emailjs
-          .send("service_7jl8a9m","template_iwrb1ra", data)
-          .then(() => {
-            alert("Message sent successfully!");
-          })
-          .catch((error) => {
-            console.error("Failed to send message:", error);
-            alert("Message sent successfully.");
-          });
-          
-          contactForm.reset();
-      });
-    </script>
-
-    <script src="scroll.js"></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+                publicKey: "viZyddmUCALVhbQOE",
+            });
+        })();
+    </script>
     <script src="index.js"></script>
 </body>
 </html>
